@@ -1,0 +1,41 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.dao;
+
+import java.util.List;
+import model.Municipio;
+import org.hibernate.Query;
+
+
+public class DaoMunicipio extends DaoGenerics<Municipio> {
+
+    public DaoMunicipio() {
+        super.alvo = Municipio.class;
+    }
+    
+    
+    public List<Municipio> obterNome(String nome) {
+        List<Municipio> lista = null;
+        if (nome != null || !"".equals(nome)) {
+
+            Query query = session.createQuery("From "
+                    + alvo.getSimpleName()
+                    + " where nome LIKE '%"
+                    + nome + "%'");
+            lista = query.list();
+        }
+        return lista;
+    }
+
+    public Municipio obterId(String id) {
+        Municipio objeto = null;
+        if (id != null) {
+            objeto = (Municipio) session.createQuery("From "
+                    + alvo.getSimpleName()
+                    + " where id = '" + id + "'").uniqueResult();
+        }
+        return objeto;
+    }
+}
