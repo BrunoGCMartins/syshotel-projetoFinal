@@ -7,20 +7,20 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 @Entity
-public class Fornecedor implements Serializable {
+public class GrupoDeProduto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
-    private String cnpj;
+    private String descrisao;
     @OneToMany
     private List<Produto> produto;
 
@@ -39,45 +39,35 @@ public class Fornecedor implements Serializable {
     }
 
     /**
-     * @return the nome
+     * @return the descrisao
      */
-    public String getNome() {
-        return nome;
+    public String getDescrisao() {
+        return descrisao;
     }
 
     /**
-     * @param nome the nome to set
+     * @param descrisao the descrisao to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescrisao(String descrisao) {
+        this.descrisao = descrisao;
     }
 
     /**
-     * @return the cnpj
+     * @return the produto
      */
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    /**
-     * @param cnpj the cnpj to set
-     */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public List<Produto> getProduto() {
         return produto;
     }
 
+    /**
+     * @param produto the produto to set
+     */
     public void setProduto(List<Produto> produto) {
         this.produto = produto;
     }
 
-
-
     @Override
     public String toString() {
-        return nome;
+        return descrisao;
     }
 }

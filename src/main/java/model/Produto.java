@@ -11,18 +11,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
-@Entity
-public class Fornecedor implements Serializable {
+@Entity 
+public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private String cnpj;
+    private String marca;
     @OneToMany
-    private List<Produto> produto;
+    private List<Fornecedor> fornecedor;
 
     /**
      * @return the id
@@ -53,31 +54,29 @@ public class Fornecedor implements Serializable {
     }
 
     /**
-     * @return the cnpj
+     * @return the marca
      */
-    public String getCnpj() {
-        return cnpj;
+    public String getMarca() {
+        return marca;
     }
 
     /**
-     * @param cnpj the cnpj to set
+     * @param marca the marca to set
      */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public List<Produto> getProduto() {
-        return produto;
+    public List<Fornecedor> getFornecedor() {
+        return fornecedor;
     }
 
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
+    public void setFornecedor(List<Fornecedor> fornecedor) {
+        this.fornecedor = fornecedor;
     }
-
-
 
     @Override
     public String toString() {
-        return nome;
+        return getNome();
     }
 }
