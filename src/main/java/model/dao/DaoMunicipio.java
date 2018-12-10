@@ -8,10 +8,7 @@ import java.util.List;
 import model.Municipio;
 import org.hibernate.Query;
 
-/**
- *
- * @author JoaoPaulo
- */
+
 public class DaoMunicipio extends DaoGenerics<Municipio> {
 
     public DaoMunicipio() {

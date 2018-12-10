@@ -8,10 +8,7 @@ import java.util.List;
 import model.Estado;
 import org.hibernate.Query;
 
-/**
- *
- * @author JoaoPaulo
- */
+
 public class DaoEstado extends DaoGenerics<Estado> {
 
     public DaoEstado() {

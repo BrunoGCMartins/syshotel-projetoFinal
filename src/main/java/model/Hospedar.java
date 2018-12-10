@@ -14,10 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author JoaoPaulo
- */
+
 @Entity
 public class Hospedar implements Serializable {
 

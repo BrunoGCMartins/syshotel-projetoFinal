@@ -14,10 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author JoaoPaulo
- */
+
 @Entity
 public class Municipio implements Serializable {
 

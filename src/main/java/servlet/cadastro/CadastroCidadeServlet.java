@@ -1,12 +1,15 @@
 package servlet.cadastro;
 
 
+import model.Apartamento;
 import model.Estado;
 import model.Municipio;
+import model.dao.DaoApartamento;
 import model.dao.DaoEstado;
 import model.dao.DaoMunicipio;
 import org.apache.catalina.Context;
 import util.TransactionUtil;
+import util.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @WebServlet(
         name = "Registration cidade",
