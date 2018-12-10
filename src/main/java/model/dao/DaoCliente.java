@@ -9,7 +9,10 @@ import java.util.List;
 import model.Cliente;
 import org.hibernate.Query;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 public class DaoCliente extends DaoGenerics<Cliente> {
 
     public DaoCliente() {

@@ -8,7 +8,10 @@ import java.util.List;
 import model.Apartamento;
 import org.hibernate.Query;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 public class DaoApartamento extends DaoGenerics<Apartamento> {
 
     public DaoApartamento() {

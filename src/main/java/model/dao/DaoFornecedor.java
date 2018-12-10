@@ -8,7 +8,10 @@ import java.util.List;
 import model.Fornecedor;
 import org.hibernate.Query;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 public class DaoFornecedor extends DaoGenerics<Fornecedor> {
 
     public DaoFornecedor() {

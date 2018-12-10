@@ -18,7 +18,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 @Entity
 public class Cliente implements Serializable {
 

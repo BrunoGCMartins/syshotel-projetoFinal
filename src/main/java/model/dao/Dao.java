@@ -6,7 +6,10 @@ package model.dao;
 
 import java.util.List;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 interface Dao<T> {
 
     public void persistir(T entidade);

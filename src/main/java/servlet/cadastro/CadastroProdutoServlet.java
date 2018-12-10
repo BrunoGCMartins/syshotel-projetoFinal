@@ -1,10 +1,9 @@
 package servlet.cadastro;
 
 
-import model.Estado;
-import model.Municipio;
-import model.dao.DaoEstado;
-import model.dao.DaoMunicipio;
+import model.Apartamento;
+import model.Produto;
+import model.dao.DaoProduto;
 import org.apache.catalina.Context;
 import util.TransactionUtil;
 
@@ -16,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(
-        name = "Registration cidade",
-        urlPatterns = {"/cadastro/cidade"}
+        name = "Registration produto",
+        urlPatterns = {"/cadastro/produto"}
 )
-public class CadastroCidadeServlet extends HttpServlet {
+public class CadastroProdutoServlet extends HttpServlet {
 
     Context context;
 
@@ -32,43 +31,27 @@ public class CadastroCidadeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("estados", new DaoEstado().listar());
-        req.getRequestDispatcher("/cadastro/cadastrocidade.jsp").forward(req, resp);
+        req.getRequestDispatcher("/cadastro/cadastroproduto.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        Municipio municipo = new Municipio();
-
-        if (req.getParameter("nomeCidade") != null && !req.getParameter("nomeCidade").isEmpty()) {  //veDaorifica se o campo Codigo esta vazio
-            municipo.setNome(req.getParameter("nomeCidade"));
+        Produto apt = new Produto();
+        if (req.getParameter("nomeProduto") != null && !req.getParameter("nomeProduto").isEmpty()) {  //veDaorifica se o campo Codigo esta vazio
+            apt.setNome(req.getParameter("nomeProduto"));
         }
-        Estado estado = new Estado();
-        if (req.getParameter("estado") != null && !req.getParameter("estado").isEmpty()) {  //veDaorifica se o campo Codigo esta vazio
-            estado.setId(Integer.parseInt(req.getParameter("estado")));
+        if (req.getParameter("marcaProduto") != null && !req.getParameter("marcaProduto").isEmpty()) {  //veDaorifica se o campo Codigo esta vazio
+            apt.setMarca(req.getParameter("marcaProduto"));
         }
-        municipo.setEstado(estado);
 
         TransactionUtil.beginTransaction();
         try {
-            new DaoMunicipio().persistir(municipo);
+            new DaoProduto().persistir(apt);
             TransactionUtil.commit();
         } catch (Exception ex) {
             TransactionUtil.rollback();
         }
-
-
-//        TransactionUtil.beginTransaction();
-//        try {
-//            new DaoApartamento().persistir(municipo);
-//            TransactionUtil.commit();
-//        } catch (Exception ex) {
-//            TransactionUtil.rollback();
-//        }
-
-
 
 //        TransactionUtil.closeCurrentSession();
 //        TransactionUtil.beginTransaction();
@@ -92,7 +75,7 @@ public class CadastroCidadeServlet extends HttpServlet {
         }
 */
 
-        resp.sendRedirect("/cadastro/cidade");
+        resp.sendRedirect("/cadastro/produto");
     }
 
 }

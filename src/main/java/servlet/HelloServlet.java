@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
         name = "MyServlet", 
-        urlPatterns = {"/"}
+        urlPatterns = {"/temp"}
     )
 public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        resp.sendRedirect("/cadastro/cliente");
+        req.getRequestDispatcher("/cadastro/cadastroapartamento.jsp").forward(req, resp);
     }
     
 }

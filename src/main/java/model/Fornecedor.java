@@ -11,8 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 @Entity
 public class Fornecedor implements Serializable {
 

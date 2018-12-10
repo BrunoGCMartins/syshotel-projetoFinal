@@ -7,17 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author JoaoPaulo
- */
 @Entity
-public class Telefone implements Serializable {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String numero;
+    private int id;
+    private String usuario;
+    private String senha;
+
+    public Usuario() {
+    }
 
     public int getId() {
         return id;
@@ -27,17 +27,25 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-       @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Override
     public String toString() {
-        return numero;
+        return usuario;
     }
-}
 
+}

@@ -8,58 +8,61 @@ import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 public class TransactionUtil {
-    
+
     static Session session = null;
     static Transaction transaction = null;
-    
-    public static void beginTransaction(){
-        if(transaction != null){
+
+    public static void beginTransaction() {
+        if (transaction != null) {
             throw new RuntimeException("Já existe uma transação iniciada.");
-        }else{
-            
-        session = HibernateUtil.getSessionFactory().openSession();
-        transaction = session.beginTransaction();        
+        } else {
+
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
         }
     }
-    
-    public static void commit(){
-        if(transaction == null){
+
+    public static void commit() {
+        if (transaction == null) {
             throw new RuntimeException("Erro tentando executar commit() sem antes ter executado beginTrans()..");
-            
+
         }
         transaction.commit();
         closeCurrentSession();
-        
+
     }
-    
-    public static void rollback(){
-        if(transaction == null){
+
+    public static void rollback() {
+        if (transaction == null) {
             throw new RuntimeException("Erro tentando executar rollback() sem antes ter executado beginTrans()..");
         }
-        transaction.rollback();        
+        transaction.rollback();
         closeCurrentSession();
     }
-    
-    public static Session getCurrentSession(){
+
+    public static Session getCurrentSession() {
         /*Automatizando a criação da transação.*/
-        if(session == null){
+        if (session == null) {
             Session session2 = HibernateUtil.getSessionFactory().openSession();
-           // System.out.println("========================="+session2.getFlushMode());
-            session2.setFlushMode(FlushMode.ALWAYS);            
-            return session2; 
+            // System.out.println("========================="+session2.getFlushMode());
+            session2.setFlushMode(FlushMode.ALWAYS);
+            return session2;
         }
-        return session;        
+        return session;
     }
-    
-    
-    public  static void closeCurrentSession(){
-        if (session != null)
+
+    public static void closeCurrentSession() {
+        if (session != null) {
             session.flush();
-            session.close();
+        }
+        session.close();
         transaction = null;
         session = null;
-    }  
-    
+    }
+
 }

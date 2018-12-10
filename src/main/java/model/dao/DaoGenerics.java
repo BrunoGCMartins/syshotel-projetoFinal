@@ -5,7 +5,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import util.TransactionUtil;
 
-
+/**
+ *
+ * @author JoaoPaulo
+ */
 public abstract class DaoGenerics<T> {
 
   protected Session session = TransactionUtil.getCurrentSession();
